@@ -2,5 +2,7 @@
 
 doctype
 html
-    button(class= button, onclick=href="/deploy?commit=" + commit) "commit version?" #{commit}
+    a(href="/deploy?commit=" + commit)
+        button(class= button) "commit version?" #{commit}
     //-button(href="/deploy?commit=" + commit)"commit version?" #{commit}
+
