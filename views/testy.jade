@@ -1,0 +1,12 @@
+//
+   Created by fearfireg on 6/21/2016.
+
+
+doctype
+html
+    ul
+        - for(i=0; i <testArray.length; i++){
+            li#test_item: a(href="/update?commit=" + testArray[i]) #{testArray[i]}
+        -}
+
+        //-li#test_item: a(href="localhost:3000/update?commit=" + testArray[i]) #{testArray[i]}

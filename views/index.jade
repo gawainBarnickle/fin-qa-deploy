@@ -5,6 +5,8 @@ append body
 	.container
 		h1= title
 		p Welcome to #{title}
+		.container
+			p #{fetch}
 		+alert-info("This is a sample info alert.")
 		+navbar("Project name","dropdown_menu")
 		+navbar("Project name","dropdown_menu","inverse")
