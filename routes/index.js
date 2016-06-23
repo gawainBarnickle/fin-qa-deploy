@@ -1,6 +1,7 @@
 var express = require('express');
 var sg = require('simple-git')('../qa2');
 var router = express.Router();
+var commitList = [];
 
 router.get('/', function (req, res, next) {
 
@@ -15,8 +16,9 @@ router.get('/', function (req, res, next) {
                     for (var i = 0; i < logResult.all.length; i++) {
                         var commit = logResult.all[i];
                         console.log("commit ", commit.hash, commit.message)
-                        sg.removeRemote('origin')
                     }
+                    commitList = logResult.all;
+                    sg.removeRemote('origin')
                     res.render('index', {title: 'QA Auto Deploy', fetch: logResult.toString()});
 
 
@@ -94,7 +96,7 @@ var o =
     }
     ;
 router.get('/test', function (req, res, next) {
-    res.render('testy', {testArray: [123, 'hello']});
+    res.render('testy', {testArray: commitList});
 
 });
 router.get('/update', function (req, res, next) {
@@ -108,7 +110,11 @@ router.get('/deploy', function (req, res, next) {
     sg.addRemote('origin', 'https://gawainBarnickle:38ac1908f18591e1615c48549af86660af548811@github.com/gawainBarnickle/qa2.git', function (err, tokensRes) {
         var commit = req.query.commit;
         console.log(commit);
-        sg.removeRemote('origin')
-        res.render('testDeploy', {commit: commit});
+        //         sg.pull('origin', 'master', function(err,pullRes) {
+            //sg.checkout('commit', function (err, checkRes){
+                sg.removeRemote('origin')
+                res.render('testDeploy', {commit: commit});
+            //});
+        //});
     });
 });

@@ -1,20 +1,22 @@
-extends ../node_modules/jade-bootstrap/layouts/starter
+extends wrapper
 
 
 append body
 	.container
+		a(href="/test")
+			button() go to the created commit list.
 		h1= title
 		p Welcome to #{title}
 		.container
 			p #{fetch}
 		+alert-info("This is a sample info alert.")
-		+navbar("Project name","dropdown_menu")
-		+navbar("Project name","dropdown_menu","inverse")
-		+navbar("Project name","dropdown_menu")
-			+nav_item("index.html","active") Home
-			+nav_item("about.html") About
+		+navbar("QA Deployment","dropdown_menu")
+		+navbar("QA Deployment","dropdown_menu","inverse")
+		+navbar("QA Deployment","dropdown_menu")
+			+nav_item("/test","active") Spawned List
+			+nav_item("") About
 			+nav_item("contact.html") Contact
-		+navbar("Project name","dropdown_menu")
+		+navbar("QA Deployment","dropdown_menu")
 			+nav_item("index.html","active") Home
 			+nav_item("about.html") About
 			+nav_item("contact.html") Contact
@@ -26,5 +28,5 @@ append body
 				+nav_header Nav header
 				+nav_item("#") Separated link
 				+nav_item("#") One more separated link
-	h1 Rajasegar
+
 

@@ -1,12 +1,17 @@
-//
-   Created by fearfireg on 6/21/2016.
+extends wrapper
 
 
-doctype
-html
-    ul
-        - for(i=0; i <testArray.length; i++){
-            li#test_item: a(href="/update?commit=" + testArray[i]) #{testArray[i]}
-        -}
-
-        //-li#test_item: a(href="localhost:3000/update?commit=" + testArray[i]) #{testArray[i]}
+append body
+        .container
+            form(action='/deploy')
+                .form-group
+                    select.form-control(name='commit')
+                        - for(i=0; i <testArray.length; i++){
+                        option(value=testArray[i].hash)  #{testArray[i].message}
+                        -}
+                    .checkbox
+                        label
+                            input(type='checkbox', required)
+                            |  Are you sure this is the one you want?
+                   // a(href="/deploy?commit=" + testArray[i].hash)
+                button.btn.btn-success.btn-lg(type='submit') Submit
